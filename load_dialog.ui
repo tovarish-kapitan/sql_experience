@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>279</width>
+    <height>104</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>10</y>
+     <width>258</width>
+     <height>83</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Укажите путь к db файлу&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLineEdit" name="lineEdit"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>load_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>170</x>
+     <y>77</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>272</x>
+     <y>81</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>Dialog</receiver>
+   <slot>set_text_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>243</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>256</x>
+     <y>2</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>load_slot()</slot>
+  <slot>set_text_slot()</slot>
+ </slots>
+</ui>

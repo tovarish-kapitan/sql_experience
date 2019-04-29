@@ -1,12 +1,7 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.ext.declarative import declarative_base
 
-
 Base = declarative_base()
-#print(Base)
-
 
 
 class AirplaneSpec(Base):
@@ -92,43 +87,3 @@ class AirplaneSpec(Base):
     def __repr__(self):
         return "<Самолет вероятного союзника(id'%s',type'%s',rad'%s')>" % (self.target_type_id, self.airplane_type, self.radius)
 
-
-if __name__ == '__main__':
-    #engine = create_engine('mysql://sirm_ta:Qwerty123@pass.mipt.ru:7000/SIRM_BD', echo=True)
-    engine = create_engine('sqlite:///foo.db')
-    #engine = create_engine('sqlite://')
-    Session = sessionmaker()
-    Session.configure(bind=engine)
-    session = Session()
-
-    print('Создание таблиц в БД')
-    Base.metadata.create_all(engine)
-
-    session.query(AirplaneSpec).delete()
-    session.commit()
-
-    f16 = AirplaneSpec(airplane_type=1, radius=1000)
-    session.add(f16)
-    f35 = AirplaneSpec(airplane_type=2, radius=2000)
-    session.add(f35)
-    f18 = AirplaneSpec(airplane_type=3, radius=3000)
-    session.add(f18)
-    #session.commit()
-
-    for instance in session.query(AirplaneSpec).order_by(AirplaneSpec.target_type_id):
-        print (instance)
-
-    our_plain = session.query(AirplaneSpec).filter_by(airplane_type=1).first()
-    our_plain.radius = float(5000)
-    print(our_plain.radius)
-    #print(our_plain)
-    session.commit()
-
-    session.query(AirplaneSpec).filter_by(airplane_type=1).delete()
-
-    # TODO:
-    # добавление новых записей
-    # изменения существующих записей
-    # удаление
-    # фильтрация
-    # GUI
