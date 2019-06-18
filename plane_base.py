@@ -47,74 +47,74 @@ class PlaneBase:
                      fuel_capacity, max_load, engine_type, engine_qty, engine_thrust,
                      max_normal_overload, max_transverse_overload, path_to_cdo,
                      path_to_cdi, path_to_cl, path_to_maximal):
-        our_plain = self.session.query(self.plane_class).filter_by(target_type_id=id_).first()
-        if our_plain is None:
+        our_plane = self.session.query(self.plane_class).filter_by(target_type_id=id_).first()
+        if our_plane is None:
             pass
         else:
-            our_plain.airplane_type = airplane_type
-            our_plain.radius = radius
-            our_plain.distance = distance
-            our_plain.min_load_distance = min_load_distance
-            our_plain.max_load_distance = max_load_distance
-            our_plain.flight_duration_time = flight_duration_time
-            our_plain.cruise_velocity = cruise_velocity
-            our_plain.cruise_height = cruise_height
-            our_plain.min_velocity = min_velocity
-            our_plain.max_roll_angle = max_roll_angle
-            our_plain.max_on_height_velocity = max_on_height_velocity
-            our_plain.max_near_ground_velocity = max_near_ground_velocity
-            our_plain.patrol_velocity = patrol_velocity
-            our_plain.min_height = min_height
-            our_plain.service_ceiling = service_ceiling
-            our_plain.max_take_off_weight = max_take_off_weight
-            our_plain.empty_weight = empty_weight
-            our_plain.fuel_capacity = fuel_capacity
-            our_plain.max_load = max_load
-            our_plain.engine_type = engine_type
-            our_plain.engine_qty = engine_qty
-            our_plain.engine_thrust = engine_thrust
-            our_plain.max_normal_overload = max_normal_overload
-            our_plain.max_transverse_overload = max_transverse_overload
-            our_plain.path_to_cdo = path_to_cdo
-            our_plain.path_to_cdi = path_to_cdi
-            our_plain.path_to_cl = path_to_cl
-            our_plain.path_to_maximal = path_to_maximal
+            our_plane.airplane_type = airplane_type
+            our_plane.radius = radius
+            our_plane.distance = distance
+            our_plane.min_load_distance = min_load_distance
+            our_plane.max_load_distance = max_load_distance
+            our_plane.flight_duration_time = flight_duration_time
+            our_plane.cruise_velocity = cruise_velocity
+            our_plane.cruise_height = cruise_height
+            our_plane.min_velocity = min_velocity
+            our_plane.max_roll_angle = max_roll_angle
+            our_plane.max_on_height_velocity = max_on_height_velocity
+            our_plane.max_near_ground_velocity = max_near_ground_velocity
+            our_plane.patrol_velocity = patrol_velocity
+            our_plane.min_height = min_height
+            our_plane.service_ceiling = service_ceiling
+            our_plane.max_take_off_weight = max_take_off_weight
+            our_plane.empty_weight = empty_weight
+            our_plane.fuel_capacity = fuel_capacity
+            our_plane.max_load = max_load
+            our_plane.engine_type = engine_type
+            our_plane.engine_qty = engine_qty
+            our_plane.engine_thrust = engine_thrust
+            our_plane.max_normal_overload = max_normal_overload
+            our_plane.max_transverse_overload = max_transverse_overload
+            our_plane.path_to_cdo = path_to_cdo
+            our_plane.path_to_cdi = path_to_cdi
+            our_plane.path_to_cl = path_to_cl
+            our_plane.path_to_maximal = path_to_maximal
             self.session.commit()
 
     def attributes_dictionary(self, id_):
-        our_plain = self.session.query(self.plane_class).filter_by(target_type_id=id_).first()
-        if our_plain is None:
+        our_plane = self.session.query(self.plane_class).filter_by(target_type_id=id_).first()
+        if our_plane is None:
             return None
         else:
-            #print(our_plain)
-            dictionary = {'airplane_type': our_plain.airplane_type,
-                          'radius': our_plain.radius,
-                          'distance': our_plain.distance,
-                          'min_load_distance': our_plain.min_load_distance,
-                          'max_load_distance': our_plain.max_load_distance,
-                          'flight_duration_time': our_plain.flight_duration_time,
-                          'cruise_velocity': our_plain.cruise_velocity,
-                          'cruise_height': our_plain.cruise_height,
-                          'min_velocity': our_plain.min_velocity,
-                          'max_roll_angle': our_plain.max_roll_angle,
-                          'max_on_height_velocity': our_plain.max_on_height_velocity,
-                          'max_near_ground_velocity': our_plain.max_near_ground_velocity,
-                          'patrol_velocity': our_plain.patrol_velocity,
-                          'min_height': our_plain.min_height,
-                          'service_ceiling': our_plain.service_ceiling,
-                          'max_take_off_weight': our_plain.max_take_off_weight,
-                          'empty_weight': our_plain.empty_weight,
-                          'fuel_capacity': our_plain.fuel_capacity,
-                          'max_load': our_plain.max_load,
-                          'engine_type': our_plain.engine_type,
-                          'engine_qty': our_plain.engine_qty,
-                          'engine_thrust': our_plain.engine_thrust,
-                          'max_normal_overload': our_plain.max_normal_overload,
-                          'max_transverse_overload': our_plain.max_transverse_overload,
-                          'path_to_cdo': our_plain.path_to_cdo,
-                          'path_to_cdi': our_plain.path_to_cdi,
-                          'path_to_cl': our_plain.path_to_cl,
-                          'path_to_maximal': our_plain.path_to_maximal}
+            #print(our_plane)
+            dictionary = {'airplane_type': our_plane.airplane_type,
+                          'radius': our_plane.radius,
+                          'distance': our_plane.distance,
+                          'min_load_distance': our_plane.min_load_distance,
+                          'max_load_distance': our_plane.max_load_distance,
+                          'flight_duration_time': our_plane.flight_duration_time,
+                          'cruise_velocity': our_plane.cruise_velocity,
+                          'cruise_height': our_plane.cruise_height,
+                          'min_velocity': our_plane.min_velocity,
+                          'max_roll_angle': our_plane.max_roll_angle,
+                          'max_on_height_velocity': our_plane.max_on_height_velocity,
+                          'max_near_ground_velocity': our_plane.max_near_ground_velocity,
+                          'patrol_velocity': our_plane.patrol_velocity,
+                          'min_height': our_plane.min_height,
+                          'service_ceiling': our_plane.service_ceiling,
+                          'max_take_off_weight': our_plane.max_take_off_weight,
+                          'empty_weight': our_plane.empty_weight,
+                          'fuel_capacity': our_plane.fuel_capacity,
+                          'max_load': our_plane.max_load,
+                          'engine_type': our_plane.engine_type,
+                          'engine_qty': our_plane.engine_qty,
+                          'engine_thrust': our_plane.engine_thrust,
+                          'max_normal_overload': our_plane.max_normal_overload,
+                          'max_transverse_overload': our_plane.max_transverse_overload,
+                          'path_to_cdo': our_plane.path_to_cdo,
+                          'path_to_cdi': our_plane.path_to_cdi,
+                          'path_to_cl': our_plane.path_to_cl,
+                          'path_to_maximal': our_plane.path_to_maximal}
             return dictionary
 
     def print_all(self):
@@ -122,8 +122,8 @@ class PlaneBase:
             print(instance)
 
     def delete_record(self, id_):
-        our_plain = self.session.query(self.plane_class).filter_by(target_type_id=id_).first()
-        if our_plain is None:
+        our_plane = self.session.query(self.plane_class).filter_by(target_type_id=id_).first()
+        if our_plane is None:
             assert "wtf"
         else:
             self.session.query(self.plane_class).filter_by(target_type_id=id_).delete()

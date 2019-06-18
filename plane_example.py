@@ -118,10 +118,10 @@ if __name__ == '__main__':
     for instance in session.query(AirplaneSpec).order_by(AirplaneSpec.target_type_id):
         print (instance)
 
-    our_plain = session.query(AirplaneSpec).filter_by(airplane_type=1).first()
-    our_plain.radius = float(5000)
-    print(our_plain.radius)
-    #print(our_plain)
+    our_plane = session.query(AirplaneSpec).filter_by(airplane_type=1).first()
+    our_plane.radius = float(5000)
+    print(our_plane.radius)
+    #print(our_plane)
     session.commit()
 
     session.query(AirplaneSpec).filter_by(airplane_type=1).delete()

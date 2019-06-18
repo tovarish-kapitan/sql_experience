@@ -7,28 +7,41 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import sqlite3
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(590, 287)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget.setGeometry(QtCore.QRect(5, 11, 791, 321))
-        self.tableWidget.setRowCount(5)
-        self.tableWidget.setColumnCount(27)
+        self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
+        self.layoutWidget.setGeometry(QtCore.QRect(20, 10, 544, 223))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.layoutWidget)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setObjectName("gridLayout")
+        self.tableWidget = QtWidgets.QTableWidget(self.layoutWidget)
+        self.tableWidget.setColumnCount(28)
         self.tableWidget.setObjectName("tableWidget")
-        self.btn_load = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_load.setGeometry(QtCore.QRect(130, 380, 80, 23))
-        self.btn_load.setObjectName("btn_load")
-
-        self.btn_load.clicked.connect(self.loadData)
-
+        self.tableWidget.setRowCount(0)
+        self.gridLayout.addWidget(self.tableWidget, 0, 0, 1, 5)
+        self.pushButton = QtWidgets.QPushButton(self.layoutWidget)
+        self.pushButton.setObjectName("pushButton")
+        self.gridLayout.addWidget(self.pushButton, 1, 0, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(198, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem, 1, 1, 1, 1)
+        self.pushButton_4 = QtWidgets.QPushButton(self.layoutWidget)
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.gridLayout.addWidget(self.pushButton_4, 1, 2, 1, 1)
+        self.pushButton_3 = QtWidgets.QPushButton(self.layoutWidget)
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.gridLayout.addWidget(self.pushButton_3, 1, 3, 1, 1)
+        self.pushButton_2 = QtWidgets.QPushButton(self.layoutWidget)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.gridLayout.addWidget(self.pushButton_2, 1, 4, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 20))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 590, 20))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -36,31 +49,18 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
+        self.pushButton.clicked.connect(MainWindow.load_slot)
+        self.pushButton_4.clicked.connect(MainWindow.delete_slot)
+        self.pushButton_3.clicked.connect(MainWindow.edit_slot)
+        self.pushButton_2.clicked.connect(MainWindow.add_slot)
+        self.tableWidget.cellClicked['int','int'].connect(MainWindow.select_row)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.btn_load.setText(_translate("MainWindow", "Load"))
+        self.pushButton.setText(_translate("MainWindow", "load db file"))
+        self.pushButton_4.setText(_translate("MainWindow", "delete"))
+        self.pushButton_3.setText(_translate("MainWindow", "edit"))
+        self.pushButton_2.setText(_translate("MainWindow", "add new"))
 
-    def loadData(self):
-        connection = sqlite3.connect('foo.db')
-        query = "SELECT * FROM airplane_spec"
-        result = connection.execute(query)
-        self.tableWidget.setRowCount(0)
-        for row_number, row_data in enumerate(result):
-            self.tableWidget.insertRow(row_number)
-            for column_number, data in enumerate(row_data):
-                self.tableWidget.setItem(row_number, column_number,
-                                         QtWidgets.QTableWidgetItem(str(data)))
-        connection.close()
-
-
-if __name__ == '__main__':
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    app.exec_()

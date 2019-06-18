@@ -38,4 +38,5 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label.setText(_translate("Dialog", "<html><head/><body><p align=\"center\">Укажите путь к db файлу</p></body></html>"))
         self.pushButton.setText(_translate("Dialog", "PushButton"))
+        self.lineEdit.setText(_translate("Dialog", "sqlite:///foo.db"))
 

@@ -38,7 +38,11 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLineEdit" name="lineEdit"/>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="text">
+       <string>sqlite:///foo.db</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
