@@ -9,21 +9,22 @@ import plane_base
 class DeleteDialogWindow(QtWidgets.QMainWindow, delete_dialog.Ui_MainWindow):
     set_base = pyqtSignal(bool)
 
-    def __init__(self, pc, parent=None):
+    def __init__(self, pb, parent=None):
         super().__init__(parent)
-        if pc is None:
+        if pb is None:
             pass
         else:
             self.setupUi(self)
-            self.pc = pc
-            self.id_ = -1
+            self.pb = pb
+            self.id_ = self.pb.selected_id
 
     def id_slot(self):
-        self.id_ = self.spinBox.value()
+        self.id_ = self.pb.selected_id
 
     def delete_slot(self):
-        self.pc.delete_record(self.id_)
+        self.pb.delete_record(self.id_)
         self.set_base.emit(True)
+        self.close()
 
 
 if __name__ == '__main__':

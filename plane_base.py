@@ -10,11 +10,18 @@ class PlaneBase:
     def __init__(self, path_to_db):
         self.Base = declarative_base()
         self.Session = sessionmaker()
-        self.engine = create_engine(path_to_db)  #'sqlite:///foo.db'
+        self.engine = create_engine(path_to_db)
         self.Session.configure(bind=self.engine)
         self.session = self.Session()
         self.Base.metadata.create_all(self.engine)
         self.plane_class = airplane_spec.AirplaneSpec
+        self.selected_id = None
+
+    def set_selected_id(self, n):
+        self.selected_id = n
+
+    def selected_id(self):
+        return self.selected_id
 
     def clean_bd(self):
         self.session.query(self.plane_class).delete()

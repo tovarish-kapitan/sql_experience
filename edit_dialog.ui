@@ -426,35 +426,6 @@
     <string>Save changes</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="load_record_">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>460</y>
-     <width>47</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <number>-1</number>
-   </property>
-   <property name="value">
-    <number>-1</number>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_29">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>460</y>
-     <width>151</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>ID of record to configure</string>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections>
@@ -919,22 +890,6 @@
     <hint type="destinationlabel">
      <x>378</x>
      <y>469</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>load_record_</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>edit_dialog_window</receiver>
-   <slot>load_record()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>194</x>
-     <y>473</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>255</x>
-     <y>472</y>
     </hint>
    </hints>
   </connection>

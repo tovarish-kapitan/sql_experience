@@ -217,14 +217,6 @@ class Ui_edit_dialog_window(object):
         self.save_changes_ = QtWidgets.QPushButton(edit_dialog_window)
         self.save_changes_.setGeometry(QtCore.QRect(340, 460, 201, 23))
         self.save_changes_.setObjectName("save_changes_")
-        self.load_record_ = QtWidgets.QSpinBox(edit_dialog_window)
-        self.load_record_.setGeometry(QtCore.QRect(180, 460, 47, 24))
-        self.load_record_.setMinimum(-1)
-        self.load_record_.setProperty("value", -1)
-        self.load_record_.setObjectName("load_record_")
-        self.label_29 = QtWidgets.QLabel(edit_dialog_window)
-        self.label_29.setGeometry(QtCore.QRect(30, 460, 151, 16))
-        self.label_29.setObjectName("label_29")
 
         self.retranslateUi(edit_dialog_window)
         self.service_ceiling_.valueChanged['double'].connect(edit_dialog_window.set_service_ceiling)
@@ -256,7 +248,6 @@ class Ui_edit_dialog_window(object):
         self.patrol_velocity_.valueChanged['double'].connect(edit_dialog_window.set_patrol_velocity)
         self.min_height_.valueChanged['double'].connect(edit_dialog_window.set_min_height)
         self.save_changes_.clicked.connect(edit_dialog_window.save_changes)
-        self.load_record_.valueChanged['int'].connect(edit_dialog_window.load_record)
         edit_dialog_window.airplane_type_set['int'].connect(self.airplane_type_.setValue)
         edit_dialog_window.radius_set['double'].connect(self.radius_.setValue)
         edit_dialog_window.distance_set['double'].connect(self.distance_.setValue)
@@ -319,5 +310,4 @@ class Ui_edit_dialog_window(object):
         self.label_28.setText(_translate("edit_dialog_window", "path_to_maximal"))
         self.label.setText(_translate("edit_dialog_window", "airplane_type"))
         self.save_changes_.setText(_translate("edit_dialog_window", "Save changes"))
-        self.label_29.setText(_translate("edit_dialog_window", "ID of record to configure"))
 

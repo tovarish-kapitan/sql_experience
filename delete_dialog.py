@@ -22,12 +22,6 @@ class Ui_MainWindow(object):
         self.formLayout_2.setObjectName("formLayout_2")
         self.formLayout = QtWidgets.QFormLayout()
         self.formLayout.setObjectName("formLayout")
-        self.label = QtWidgets.QLabel(self.layoutWidget)
-        self.label.setObjectName("label")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
-        self.spinBox = QtWidgets.QSpinBox(self.layoutWidget)
-        self.spinBox.setObjectName("spinBox")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.spinBox)
         self.formLayout_2.setLayout(0, QtWidgets.QFormLayout.LabelRole, self.formLayout)
         self.pushButton = QtWidgets.QPushButton(self.layoutWidget)
         self.pushButton.setObjectName("pushButton")
@@ -43,12 +37,10 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.pushButton.clicked.connect(MainWindow.delete_slot)
-        self.spinBox.valueChanged['int'].connect(MainWindow.id_slot)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "ID удаляемой записи"))
         self.pushButton.setText(_translate("MainWindow", "Удалить"))
 

@@ -10,20 +10,23 @@ import plane_base
 class LoadDialogWindow(QtWidgets.QMainWindow, load_dialog.Ui_Dialog):
     set_base = pyqtSignal(bool)
 
-    def __init__(self, path_to_db='sqlite:///foo.db', parent=None):
+    def __init__(self, path_to_db, parent=None):
         super().__init__(parent)
         self.setupUi(self)
         self.path_to_db = path_to_db  #'sqlite:///foo.db'
-        self.pc = None
+        self.pb = plane_base.PlaneBase(self.path_to_db)
 
     def set_text_slot(self):
         self.path_to_db = self.lineEdit.text()
 
     def load_slot(self):
-        self.pc = plane_base.PlaneBase(self.path_to_db)
         self.set_base.emit(True)
+        self.close()
         #self.set_base_path.emit(self.path_to_db)
-        return self.pc
+        #return self.pb
+
+    def p_b(self):
+        return self.pb
 
     def set_base_path(self):
         return self.path_to_db

@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
         self.tableWidget = QtWidgets.QTableWidget(self.layoutWidget)
-        self.tableWidget.setColumnCount(28)
+        self.tableWidget.setColumnCount(29)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setRowCount(0)
         self.gridLayout.addWidget(self.tableWidget, 0, 0, 1, 5)

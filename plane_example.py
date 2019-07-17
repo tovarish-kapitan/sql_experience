@@ -5,8 +5,6 @@ from sqlalchemy.ext.declarative import declarative_base
 
 
 Base = declarative_base()
-#print(Base)
-
 
 
 class AirplaneSpec(Base):
@@ -94,9 +92,7 @@ class AirplaneSpec(Base):
 
 
 if __name__ == '__main__':
-    #engine = create_engine('mysql://sirm_ta:Qwerty123@pass.mipt.ru:7000/SIRM_BD', echo=True)
     engine = create_engine('sqlite:///foo.db')
-    #engine = create_engine('sqlite://')
     Session = sessionmaker()
     Session.configure(bind=engine)
     session = Session()

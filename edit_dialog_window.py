@@ -38,14 +38,14 @@ class EditDialogWindow(QtWidgets.QMainWindow, edit_dialog.Ui_edit_dialog_window)
     path_to_maximal_set = pyqtSignal(str)
     set_base = pyqtSignal(bool)
 
-    def __init__(self, pc, parent=None):
+    def __init__(self, pb, parent=None):
         super().__init__(parent)
-        if pc is None:
+        if pb is None:
             pass
         else:
             self.setupUi(self)
-            self.pc = pc
-            self.id_ = -1
+            self.pb = pb
+            self.id_ = self.pb.selected_id
             self.airplane_type = 0
             self.radius = 0
             self.distance = 0
@@ -160,7 +160,7 @@ class EditDialogWindow(QtWidgets.QMainWindow, edit_dialog.Ui_edit_dialog_window)
         self.path_to_maximal = self.path_to_maximal_.text()
 
     def save_changes(self):
-        self.pc.save_changes(self.id_, self.airplane_type, self.radius, self.distance, self.min_load_distance,
+        self.pb.save_changes(self.id_, self.airplane_type, self.radius, self.distance, self.min_load_distance,
                              self.max_load_distance, self.flight_duration_time, self.cruise_velocity,
                              self.cruise_height, self.min_velocity, self.max_roll_angle,
                              self.max_on_height_velocity, self.max_near_ground_velocity, self.patrol_velocity,
@@ -171,9 +171,9 @@ class EditDialogWindow(QtWidgets.QMainWindow, edit_dialog.Ui_edit_dialog_window)
         self.set_base.emit(True)
 
     def load_record(self):
-        self.id_ = self.load_record_.value()
-        d = self.pc.attributes_dictionary(self.id_)
-        #print(self.id_, d)
+        #self.id_ = self.load_record_.value()
+        self.id_ = self.pb.selected_id
+        d = self.pb.attributes_dictionary(self.id_)
         if d is None:
             pass
         else:
@@ -237,10 +237,10 @@ class EditDialogWindow(QtWidgets.QMainWindow, edit_dialog.Ui_edit_dialog_window)
 
 
 if __name__ == '__main__':
-    pc = plane_base.PlaneBase()
-    #pc.clean_bd()
+    pb = plane_base.PlaneBase()
+    #pb.clean_bd()
     app = QApplication(sys.argv)
-    edw = EditDialogWindow(pc)
+    edw = EditDialogWindow(pb)
     edw.show()
     app.exec_()
-    pc.print_all()
+    pb.print_all()
